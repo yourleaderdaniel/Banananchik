@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <script src="https://kit.fontawesome.com/your-font-awesome-key.js" crossorigin="anonymous"></script>
+  <title>Primitive Layout</title>
+
+
+  <style>
+
+.title-logo::before {
+      content: '';
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      background-image: url('thx.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .title-logo:hover::before {
+      animation: spin 0.2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('BG4.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+    z-index: -1;
+  }
+
+  #root {
+    max-width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* + */
+  }
+
+  .column {
+    background-image: linear-gradient(to bottom right, #ffffff, #fff3be);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 15px;
+    box-sizing: border-box;
+    width: calc(23% - 30px); /* + */
+    margin: 15px; /* + */
+    transition: transform 0.3s ease;
+  }
+  @media screen and (max-width: 767px) {
+    .column {
+      width: calc(100% - 30px); /* + */
+    }
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif; /* + */
+    color: #555224;
+  }
+    h2 {
+      font-size: 20px #555224;
+      font-weight: 500;
+      border-bottom: 1px solid #e4e4e4;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    .content-wrapper {
+    background-image: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .button-wrapper button {
+    background-color: #63603d;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .button-wrapper button:hover {
+    background-color: #999670;
+  }
+  
+  .content-wrapper img {
+    width: 100%; /* + */
+    height: 150px; /* + */
+    display: block; /* + */
+    object-fit: cover; /* + */
+    margin-bottom: 10px; /* + */
+  }
+
+  .content-wrapper button:hover {
+    transform: scale(1.05);
+    z-index: 1;
+  }
+    .content-wrapper:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div class="title-logo"></div>
+  <script>
+    const data = [
+  {
+    "emitted_at": "2020-07-12 03:00:00",
+    "body": {
+      "body_type": "Order",
+      "content": "banana with banana",
+      "image_url": "img/banana.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-12 02:00:00",
+    "body": {
+      "body_type": "Recipe",
+      "content": "banana with banana",
+      "image_url": "img/banana.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-12 01:00:00",
+    "body": {
+      "body_type": "Ingredient",
+      "content": "banana",
+      "image_url": "img/banana.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-11 10:00:00",
+    "body": {
+      "body_type": "Message",
+      "content": "something happened",
+      "image_url": "img/hideri.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-11 02:00:00",
+    "body": {
+      "body_type": "Order",
+      "content": "potato with pommel",
+      "image_url": "img/pomel.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-11 01:00:00",
+    "body": {
+      "body_type": "Recipe",
+      "content": "potato with pommel",
+      "image_url": "img/pomel.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-10 17:00:00",
+    "body": {
+      "body_type": "Ingredient",
+      "content": "banana",
+      "image_url": "img/banana.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-10 16:00:00",
+    "body": {
+      "body_type": "Ingredient",
+      "content": "pommel",
+      "image_url": "img/pomel.jpg"
+    }
+  },
+  {
+    "emitted_at": "2020-07-10 15:00:00",
+    "body": {
+      "body_type": "Ingredient",
+      "content": "potato",
+      "image_url": "img/potato.jpg"
+    }
+  }
+];
+
+    function generateColumns(data) {
+      const columns = {
+        Order: [],
+        Recipe: [],
+        Ingredient: [],
+        Message: [],
+      };
+
+      data.forEach((item) => {
+        columns[item.body.body_type].push(item);
+      });
+
+      return columns;
+    }
+
+    function displayColumns(columns) {
+      const root = document.getElementById('root');
+
+      Object.entries(columns).forEach(([key, value]) => {
+        const column = document.createElement('div');
+        column.className = 'column';
+
+        const header = document.createElement('h2');
+        header.textContent = key;
+        column.appendChild(header);
+
+        value.forEach((item) => {
+          const contentWrapper = document.createElement('div');
+          contentWrapper.className = 'content-wrapper';
+          
+          const img = document.createElement('img'); // added this line
+          img.src = item.body.image_url; // added this line
+          contentWrapper.appendChild(img); // added this line
+
+          const timestamp = document.createElement('p');
+          const content = document.createElement('p');
+          timestamp.textContent = item.emitted_at;
+          content.textContent = item.body.content;
+          contentWrapper.appendChild(timestamp);
+          contentWrapper.appendChild(content);
+          column.appendChild(contentWrapper);
+
+          const buttonWrapper = document.createElement('div'); // added this line
+          buttonWrapper.className = 'button-wrapper'; // added this line
+
+          if (item.body.body_type === 'Order') {
+        const generateButton = document.createElement('button');
+        generateButton.textContent = 'Generate';
+        buttonWrapper.appendChild(generateButton);
+      } else if (item.body.body_type === 'Ingredient') {
+        const useButton = document.createElement('button');
+        useButton.textContent = 'Use';
+        buttonWrapper.appendChild(useButton);
+      } else if (item.body.body_type === 'Recipe') {
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        buttonWrapper.appendChild(editButton);
+
+        const generateButton = document.createElement('button');
+        generateButton.textContent = 'Generate';
+        buttonWrapper.appendChild(generateButton);
+      } else if (item.body.body_type === 'Message') {
+        const replyButton = document.createElement('button');
+        replyButton.textContent = 'Reply';
+        buttonWrapper.appendChild(replyButton);
+      }
+
+      column.appendChild(buttonWrapper); // added this line
+        });
+
+        root.appendChild(column);
+      });
+    }
+
+    const columns = generateColumns(data);
+    displayColumns(columns);
+  </script>
+</body>
+</html>
